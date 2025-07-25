@@ -94,40 +94,31 @@ async def upload_image(
 
 @router.post("/chat-meal-coach/")
 async def chat_meal_coach(payload: UserMessage):
+    db: Session = SessionLocal()
+
     try:
-        db: Session = SessionLocal()
+        # ✅ Validate user
         user = db.query(User).filter(User.user_id == payload.user_id).first()
         if not user:
             raise HTTPException(status_code=404, detail="User not found")
 
-        # Get today’s date range
-        today = datetime.now().date()
-        today_start = datetime.combine(today, datetime.min.time())
-        today_end = datetime.combine(today, datetime.max.time())
+        # ✅ Let the chain fetch today's meals internally
+        coach_chain = get_coach_chain_with_meal_context(user.user_id)
 
-        meals = (
-            db.query(MealLog)
-            .filter(MealLog.user_id == user.user_id)
-            .filter(MealLog.meal_time >= today_start)
-            .filter(MealLog.meal_time <= today_end)
-            .order_by(MealLog.meal_time.asc())
-            .all()
-        )
-
-        if not meals:
-            meal_context = "The user hasn't logged any meals today."
-        else:
-            meal_context = "\n".join([
-                f"{meal.meal_time.strftime('%H:%M')}: {meal.summary}" for meal in meals
-            ])
-
-        coach_chain = get_coach_chain_with_meal_context(meal_context)
+        # ✅ Send user message to the LLM
         response = coach_chain.invoke({"input": payload.message})
 
-        return {"reply": response}
+        # ✅ Return response content
+        return {
+            "reply": response.content if hasattr(response, "content") else response
+        }
 
     except Exception as e:
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
+
+    finally:
+        db.close()
 
 
 @router.get("/generate-daily-report/{user_id}")

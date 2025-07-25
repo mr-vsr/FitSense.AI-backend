@@ -49,7 +49,7 @@ def get_coach_chain_with_meal_context(user_id: str) -> Runnable:
             "system",
             "You are a certified Indonesian nutritionist assistant. Based on the following meals consumed today:\n"
             "{meal_context}\n"
-            "Give health and nutrition guidance or answer user questions."
+            "Give health and nutrition guidance or answer user questions. Keep the advice in english only"
         ),
         ("human", "{input}")
     ])

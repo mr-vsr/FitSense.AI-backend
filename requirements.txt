@@ -4,3 +4,6 @@ python-multipart
 requests
 python-dotenv
 pandas
+langchain
+langchain-google-genai
+google-generativeai

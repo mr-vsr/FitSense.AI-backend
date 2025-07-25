@@ -1,0 +1,1144 @@
+{
+  "info": {
+    "name": "Meal Data Upload - Demo",
+    "_postman_id": "demo-id",
+    "description": "Simulates 7 days of meals for 2 users",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "user_1 - breakfast - 2025-07-17",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-17T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - lunch - 2025-07-17",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-17T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - dinner - 2025-07-17",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-17T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - breakfast - 2025-07-18",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-18T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - lunch - 2025-07-18",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-18T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - dinner - 2025-07-18",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-18T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - breakfast - 2025-07-19",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-19T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - lunch - 2025-07-19",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-19T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - dinner - 2025-07-19",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-19T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - breakfast - 2025-07-20",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-20T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - lunch - 2025-07-20",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-20T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - dinner - 2025-07-20",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-20T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - breakfast - 2025-07-21",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-21T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - lunch - 2025-07-21",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-21T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - dinner - 2025-07-21",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-21T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - breakfast - 2025-07-22",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-22T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - lunch - 2025-07-22",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-22T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - dinner - 2025-07-22",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-22T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - breakfast - 2025-07-23",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-23T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - lunch - 2025-07-23",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-23T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_1 - dinner - 2025-07-23",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_1\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-23T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - breakfast - 2025-07-17",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-17T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - lunch - 2025-07-17",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-17T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - dinner - 2025-07-17",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-17T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - breakfast - 2025-07-18",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-18T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - lunch - 2025-07-18",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-18T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - dinner - 2025-07-18",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-18T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - breakfast - 2025-07-19",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-19T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - lunch - 2025-07-19",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-19T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - dinner - 2025-07-19",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-19T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - breakfast - 2025-07-20",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-20T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - lunch - 2025-07-20",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-20T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - dinner - 2025-07-20",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-20T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - breakfast - 2025-07-21",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-21T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - lunch - 2025-07-21",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-21T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - dinner - 2025-07-21",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-21T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - breakfast - 2025-07-22",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-22T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - lunch - 2025-07-22",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-22T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - dinner - 2025-07-22",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-22T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - breakfast - 2025-07-23",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"breakfast\",\n  \"food_items\": [\n    \"oatmeal\",\n    \"banana\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 300,\n    \"protein\": 10,\n    \"fat\": 5,\n    \"carbs\": 45\n  },\n  \"meal_time\": \"2025-07-23T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - lunch - 2025-07-23",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"lunch\",\n  \"food_items\": [\n    \"rice\",\n    \"chicken curry\",\n    \"salad\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 600,\n    \"protein\": 30,\n    \"fat\": 20,\n    \"carbs\": 60\n  },\n  \"meal_time\": \"2025-07-23T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "user_2 - dinner - 2025-07-23",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"user_2\",\n  \"meal_type\": \"dinner\",\n  \"food_items\": [\n    \"noodles\",\n    \"tofu\",\n    \"greens\"\n  ],\n  \"nutrition_summary\": {\n    \"calories\": 500,\n    \"protein\": 20,\n    \"fat\": 10,\n    \"carbs\": 55\n  },\n  \"meal_time\": \"2025-07-23T00:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/meals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "meals"
+          ]
+        }
+      }
+    }
+  ]
+}

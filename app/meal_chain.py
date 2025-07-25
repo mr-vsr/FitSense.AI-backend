@@ -81,19 +81,34 @@ def generate_daily_summary(user_id: str) -> str:
         if not meals:
             return "No meals logged today."
 
-        # 📋 Format meal summary text
         summary_lines = [
             f"[{meal.meal_time.strftime('%H:%M')}] {meal.summary}" for meal in meals
         ]
         meal_context = "\n".join(summary_lines)
 
-        # 🧠 Prompt for Gemini
         prompt = ChatPromptTemplate.from_messages([
             (
                 "system",
                 "You're a certified Indonesian nutrition coach. Based on the user's meals today:\n"
                 "{meal_context}\n"
-                "Summarize the user's dietary intake in 2–3 sentences, highlight any nutritional strengths or concerns, and suggest one improvement in English."
+                "Summarize the user's dietary intake in 2–3 sentences, highlight any nutritional strengths or concerns, and suggest one improvement in English.\n"
+                """Return ONLY a JSON object in this exact format:
+            {{
+                "totalCalories": 14530,
+                "avgCalories": 2071,
+                "protein": 420,
+                "carbs": 1800,
+                "fat": 580,
+                "meals": 21,
+                "goals": {{
+                    "calories": 85,
+                    "protein": 92,
+                    "carbs": 50,
+                    "fat": 88
+                }}
+            }}
+
+            Avoid extra commentary. The output must be valid JSON."""
             ),
             ("human", "Please generate the daily summary.")
         ])
@@ -106,7 +121,6 @@ def generate_daily_summary(user_id: str) -> str:
 
         chain = prompt.partial(meal_context=meal_context) | llm
         response = chain.invoke({"input": ""})
-
         return response.content if hasattr(response, "content") else response
 
     finally:

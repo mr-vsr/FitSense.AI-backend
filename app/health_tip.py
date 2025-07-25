@@ -38,7 +38,7 @@ def generate_health_tip(user_id: str, days: int = 3) -> str:
              "You are a certified Indonesian nutritionist assistant. "
              "Based on the following meal history:\n"
              "{meal_summary}\n"
-             "Give a single, short health tip (1 sentence) to help improve the user's nutrition. Keep the tip in english"),
+             "Give a single, short health tip (1 sentence) to help improve the user's nutrition. Ensure the tip is in english"),
             ("human", "What’s a useful health tip for me?")
         ])
 

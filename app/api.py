@@ -1,3 +1,4 @@
+import json
 import os
 from fastapi import APIRouter, File, UploadFile, HTTPException, Form
 from fastapi.responses import JSONResponse
@@ -93,12 +94,15 @@ async def upload_image(
 
 
 @router.post("/chat-meal-coach/")
-async def chat_meal_coach(payload: UserMessage):
-    db: Session = SessionLocal()
-
+async def chat_meal_coach(
+    user_id:str=Form(...),
+    message:str=Form(...)
+):
+    # print(payload)
     try:
         # ✅ Validate user
-        user = db.query(User).filter(User.user_id == payload.user_id).first()
+        db: Session = SessionLocal()
+        user = db.query(User).filter(User.user_id == user_id).first()
         if not user:
             raise HTTPException(status_code=404, detail="User not found")
 
@@ -106,12 +110,33 @@ async def chat_meal_coach(payload: UserMessage):
         coach_chain = get_coach_chain_with_meal_context(user.user_id)
 
         # ✅ Send user message to the LLM
-        response = coach_chain.invoke({"input": payload.message})
+        response = coach_chain.invoke({"input": message})
 
         # ✅ Return response content
         return {
             "reply": response.content if hasattr(response, "content") else response
         }
+        today = datetime.now().date()
+        today_start = datetime.combine(today, datetime.min.time())
+        today_end = datetime.combine(today, datetime.max.time())
+
+        meals = (
+            db.query(MealLog)
+            .filter(MealLog.user_id == user.user_id)
+            .filter(MealLog.meal_time >= today_start)
+            .filter(MealLog.meal_time <= today_end)
+            .order_by(MealLog.meal_time.asc())
+            .all()
+        )
+        if not meals:
+            meal_context = "The user hasn't logged any meals today."
+        else:
+            meal_context = "\n".join([
+                f"{meal.meal_time.strftime('%H:%M')}: {meal.summary}" for meal in meals
+            ])
+        coach_chain = get_coach_chain_with_meal_context(meal_context)
+        response = coach_chain.invoke({"input": message})
+        return {"reply": response.content}
 
     except Exception as e:
         traceback.print_exc()
@@ -121,11 +146,74 @@ async def chat_meal_coach(payload: UserMessage):
         db.close()
 
 
+# @router.get("/generate-daily-report/{user_id}")
+# async def generate_weekly_report(user_id: str):
+#     try:
+#         daily_report = generate_daily_summary(user_id)
+#         # print(daily_report)
+#         cleaned = daily_report.replace('\\n', '').replace('json', '').replace('```', '').strip()
+#         # print(cleaned)
+#         try:
+#             parsed = json.loads(daily_report)
+#             # print(parsed)
+#         except json.JSONDecodeError as e:
+#             print("❌ JSON parse error:", e)
+#         if parsed:
+#             meals_per_day = parsed.get("meals", 2)
+#             total_meals = 21
+#             factor = total_meals / meals_per_day
+#             weeklyData = {
+#             "totalCalories": round(parsed["totalCalories"] * factor),
+#             "avgCalories": round((parsed["totalCalories"] * factor) / total_meals),
+#             "protein": round(parsed["protein"] * factor),
+#             "carbs": round(parsed["carbs"] * factor),
+#             "fat": round(parsed["fat"] * factor),
+#             "meals": total_meals,
+#             "goals": parsed.get("goals", {})  # Use provided goals
+#             }
+#             print("✅ weeklyData:", weeklyData)
+#         else:
+#             print("❌ No valid data to process.")
+#         return {daily_report}
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=str(e))
+
 @router.get("/generate-daily-report/{user_id}")
 async def generate_weekly_report(user_id: str):
     try:
         daily_report = generate_daily_summary(user_id)
-        return {"daily_report": daily_report}
+
+        # Step 1: Clean the string (remove \n, ``` and `json` prefix)
+        cleaned = daily_report.replace('\\n', '').replace('json', '').replace('```', '').strip()
+
+        # Step 2: Parse JSON
+        try:
+            parsed = json.loads(cleaned)
+        except json.JSONDecodeError as e:
+            print("❌ JSON parse error:", e)
+            raise HTTPException(status_code=400, detail="Invalid JSON format in daily_report.")
+
+        # Step 3: Generate weekly summary
+        meals_per_day = parsed.get("meals", 2)
+        total_meals = 21
+        factor = total_meals / meals_per_day
+
+        weekly_data = {
+            "totalCalories": round(parsed["totalCalories"] * factor),
+            "avgCalories": round((parsed["totalCalories"] * factor) / total_meals),
+            "protein": round(parsed["protein"] * factor),
+            "carbs": round(parsed["carbs"] * factor),
+            "fat": round(parsed["fat"] * factor),
+            "meals": total_meals,
+            "goals": parsed.get("goals", {})
+        }
+
+        # Optional debug
+        print("✅ weeklyData:", weekly_data)
+
+        # Step 4: Return JSON response
+        return {"weekly_summary": weekly_data}
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

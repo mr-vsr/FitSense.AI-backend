@@ -55,7 +55,7 @@ def get_coach_chain_with_meal_context(user_id: str) -> Runnable:
     ])
 
     llm = ChatGoogleGenerativeAI(
-        model="gemini-2.5-flash",
+        model="gemini-3.6-flash",
         google_api_key=os.getenv("GOOGLE_API_KEY"),
         temperature=0.5,
     )
@@ -114,7 +114,7 @@ def generate_daily_summary(user_id: str) -> str:
         ])
 
         llm = ChatGoogleGenerativeAI(
-            model="gemini-2.5-flash",
+            model="gemini-3.6-flash",
             google_api_key=os.getenv("GOOGLE_API_KEY"),
             temperature=0.5,
         )

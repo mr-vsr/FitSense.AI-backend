@@ -43,7 +43,7 @@ def generate_health_tip(user_id: str, days: int = 3) -> str:
         ])
 
         llm = ChatGoogleGenerativeAI(
-            model="gemini-2.5-flash",
+            model="gemini-3.6-flash",
             google_api_key=os.getenv("GOOGLE_API_KEY"),
             temperature=0.5,
         )

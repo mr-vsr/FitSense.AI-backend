@@ -4,10 +4,15 @@ import time
 from dotenv import load_dotenv
 from PIL import Image
 from google import genai
+from openai import OpenAI
 
 # Load API key
 load_dotenv()
-client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+gemini_client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY")) if os.getenv("OPENAI_API_KEY") else None
+
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").strip().lower()
+OPENAI_VISION_MODEL = os.getenv("OPENAI_VISION_MODEL", "gpt-5.6-luna")
 
 def detect_food_items(image_path: str) -> list[str]:
     image = Image.open(image_path)
@@ -35,7 +40,7 @@ def detect_food_items(image_path: str) -> list[str]:
     )
 
     last_error = None
-    for attempt in range(4):
+    models = [OPENAI_VISION_MODEL] if LLM_PROVIDER == "openai" else ["gemini-3.6-flash", OPENAI_VISION_MODEL]\n    last_error = None\n    for model in models:\n        if model.startswith("gpt-") and openai_client is None:\n            continue\n        for attempt in range(4):
         try:
             response = client.models.generate_content(
                 model="gemini-3.6-flash",
@@ -51,19 +56,19 @@ def detect_food_items(image_path: str) -> list[str]:
             if not transient or attempt == 3:
                 raise
             delay = 2 ** attempt
-            print(f"Gemini temporarily unavailable; retrying in {delay}s (attempt {attempt + 1}/4)")
+            print(f"{model} temporarily unavailable; retrying in {delay}s (attempt {attempt + 1}/4)")
             time.sleep(delay)
     else:
         raise last_error
 
-    print("Gemini Raw Response:", response.text)
+    if last_error is not None and not "response_text" in locals():\n        raise last_error\n\n    print("LLM Raw Response:", response_text)
 
     try:
-        result = json.loads(response.text)
+        result = json.loads(response_text)
         if isinstance(result, dict) and isinstance(result.get("food_items"), list):
             return [str(item).strip().lower() for item in result["food_items"]]
         if isinstance(result, list):
             return [str(item).strip().lower() for item in result]
         return [str(result).strip().lower()]
     except json.JSONDecodeError:
-        return [response.text.strip().lower()]
+        return [response_text.strip().lower()]

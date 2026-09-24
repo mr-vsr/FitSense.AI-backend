@@ -9,7 +9,6 @@ langchain-core
 langchain-classic
 langchain-community
 langchain-google-genai
-google-generativeai
 SQLAlchemy
 Pillow
 psycopg2-binary

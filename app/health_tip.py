@@ -46,6 +46,7 @@ def generate_health_tip(user_id: str, days: int = 3) -> str:
             model="gemini-3.6-flash",
             google_api_key=os.getenv("GOOGLE_API_KEY"),
             temperature=0.5,
+        max_retries=4,
         )
 
         chain = prompt.partial(meal_summary=meal_summary) | llm

@@ -32,6 +32,7 @@ def get_meal_coach_chain(user_id: str):
     llm = ChatGoogleGenerativeAI(
         model="gemini-3.6-flash",
         temperature=0.4,
+        max_retries=4,
     )
 
     chain = ConversationChain(

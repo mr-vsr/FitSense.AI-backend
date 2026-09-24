@@ -5,6 +5,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from datetime import datetime
+from sqlalchemy.exc import SQLAlchemyError
 
 
 from app.gemini_utils import detect_food_items
@@ -104,7 +105,7 @@ async def chat_meal_coach(
         db: Session = SessionLocal()
         user = db.query(User).filter(User.user_id == user_id).first()
         if not user:
-            raise HTTPException(status_code=404, detail="User not found")
+            raise HTTPException(status_code=404, detail="We couldn't find this user. Please analyze a meal first using this User ID.")
 
         # ✅ Let the chain fetch today's meals internally
         coach_chain = get_coach_chain_with_meal_context(user.user_id)
@@ -138,9 +139,12 @@ async def chat_meal_coach(
         response = coach_chain.invoke({"input": message})
         return {"reply": response.content}
 
-    except Exception as e:
-        traceback.print_exc()
-        raise HTTPException(status_code=500, detail=str(e))
+    except HTTPException:
+        raise
+    except SQLAlchemyError:
+        raise HTTPException(status_code=503, detail="Your meal data is temporarily unavailable. Please try again in a moment.")
+    except Exception:
+        raise HTTPException(status_code=500, detail="Sorry, we couldn't process your request right now. Please try again.")
 
     finally:
         db.close()
@@ -183,6 +187,9 @@ async def generate_weekly_report(user_id: str):
     try:
         daily_report = generate_daily_summary(user_id)
 
+        if daily_report == "No meals logged today.":
+            raise HTTPException(status_code=404, detail="No meal data found for today. Please analyze a meal first.")
+
         # Step 1: Clean the string (remove \n, ``` and `json` prefix)
         cleaned = daily_report.replace('\\n', '').replace('json', '').replace('```', '').strip()
 
@@ -214,8 +221,12 @@ async def generate_weekly_report(user_id: str):
         # Step 4: Return JSON response
         return {"weekly_summary": weekly_data}
 
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    except HTTPException:
+        raise
+    except SQLAlchemyError:
+        raise HTTPException(status_code=503, detail="Your meal data is temporarily unavailable. Please try again in a moment.")
+    except Exception:
+        raise HTTPException(status_code=500, detail="Sorry, we couldn't generate your nutrition report right now. Please try again.")
 
 
 @router.get("/daily-tip/{user_id}")
@@ -223,5 +234,7 @@ async def get_daily_health_tip(user_id: str):
     try:
         tip = generate_health_tip(user_id)
         return {"daily_tip": tip}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    except SQLAlchemyError:
+        raise HTTPException(status_code=503, detail="Your meal data is temporarily unavailable. Please try again in a moment.")
+    except Exception:
+        raise HTTPException(status_code=500, detail="Sorry, we couldn't generate a health tip right now. Please try again.")

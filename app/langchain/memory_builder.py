@@ -30,7 +30,7 @@ def get_meal_coach_chain(user_id: str):
     memory = VectorStoreRetrieverMemory(retriever=vectorstore.as_retriever())
 
     llm = ChatGoogleGenerativeAI(
-        model="gemini-1.5-flash",
+        model="gemini-3.6-flash",
         temperature=0.4,
     )
 

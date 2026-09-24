@@ -3,7 +3,8 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.chat_history import InMemoryChatMessageHistory
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-from models import SessionLocal, User, MealLog
+from app.database import SessionLocal
+from app.models import User, MealLog
 import os
 
 llm = ChatGoogleGenerativeAI(

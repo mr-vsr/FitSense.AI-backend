@@ -4,6 +4,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from app.api import router as api_router
+from app.database import engine
+from app.models import Base
 
 app = FastAPI(title="FitSense AI - Personalized Meal Assistant")
 
@@ -16,6 +18,9 @@ app.add_middleware(
 )
 
 app.include_router(api_router)
+
+# Ensure the PostgreSQL schema exists when the service starts.
+Base.metadata.create_all(bind=engine)
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -57,7 +62,7 @@ async def home():
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active')});
 function state(form,on){form.querySelector('button').disabled=on;form.querySelector('.loader').classList.toggle('show',on)}
 function show(id,data,ok=true){const el=document.getElementById(id);el.className='result show'+(ok?'':' error');if(typeof data==='string')el.textContent=data;else el.textContent=JSON.stringify(data,null,2)}
-async function parse(r){let d;try{d=await r.json()}catch{d=await r.text()}if(!r.ok)throw new Error(typeof d==='object'?(d.detail||JSON.stringify(d)):d);return d}
+async function parse(r){const text=await r.text();let d;try{d=JSON.parse(text)}catch{d=text}if(!r.ok)throw new Error(typeof d==='object'?(d.detail||'Something went wrong. Please try again.'):d||'Something went wrong. Please try again.');return d}
 mealForm.onsubmit=async e=>{e.preventDefault();state(mealForm,true);try{const d=await parse(await fetch('/upload',{method:'POST',body:new FormData(mealForm)}));show('mealResult',d)}catch(x){show('mealResult',x.message,false)}finally{state(mealForm,false)}};
 coachForm.onsubmit=async e=>{e.preventDefault();state(coachForm,true);try{const d=await parse(await fetch('/chat-meal-coach/',{method:'POST',body:new FormData(coachForm)}));show('coachResult',d.reply||d)}catch(x){show('coachResult',x.message,false)}finally{state(coachForm,false)}};
 reportForm.onsubmit=async e=>{e.preventDefault();state(reportForm,true);try{const id=encodeURIComponent(new FormData(reportForm).get('user_id'));const d=await parse(await fetch('/generate-daily-report/'+id));show('reportResult',d)}catch(x){show('reportResult',x.message,false)}finally{state(reportForm,false)}};

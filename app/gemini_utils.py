@@ -2,11 +2,11 @@ import os
 import json
 from dotenv import load_dotenv
 from PIL import Image
-from google import generativeai as genai
+from google import genai
 
 # Load API key
 load_dotenv()
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def detect_food_items(image_path: str) -> list[str]:
     # Load image as a PIL object
@@ -46,8 +46,10 @@ def detect_food_items(image_path: str) -> list[str]:
 
 
 
-    model = genai.GenerativeModel("gemini-2.5-flash")
-    response = model.generate_content([prompt, image])
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=[prompt, image],
+    )
     print("Gemini Raw Response:", response.text)
 
     try:

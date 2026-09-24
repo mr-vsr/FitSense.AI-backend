@@ -9,7 +9,8 @@ import os
 
 llm = ChatGoogleGenerativeAI(
     model="gemini-3.6-flash",
-    google_api_key=os.getenv("GOOGLE_API_KEY")
+    google_api_key=os.getenv("GOOGLE_API_KEY"),
+    max_retries=4
 )
 
 store = {}

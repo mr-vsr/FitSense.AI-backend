@@ -9,3 +9,4 @@ langchain-google-genai
 google-generativeai
 SQLAlchemy
 Pillow
+psycopg2-binary

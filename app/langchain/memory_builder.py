@@ -1,7 +1,7 @@
 from langchain_community.vectorstores import Chroma
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
-from langchain.memory import VectorStoreRetrieverMemory
-from langchain.chains import ConversationChain
+from langchain_classic.memory import VectorStoreRetrieverMemory
+from langchain_classic.chains import ConversationChain
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 import os
@@ -32,7 +32,6 @@ def get_meal_coach_chain(user_id: str):
     llm = ChatGoogleGenerativeAI(
         model="gemini-1.5-flash",
         temperature=0.4,
-        convert_system_message_to_human=True
     )
 
     chain = ConversationChain(

@@ -47,15 +47,17 @@ def detect_food_items(image_path: str) -> list[str]:
 
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.6-flash",
         contents=[prompt, image],
     )
     print("Gemini Raw Response:", response.text)
 
     try:
         result = json.loads(response.text)
+        if isinstance(result, dict) and isinstance(result.get("food_items"), list):
+            return [str(item).strip().lower() for item in result["food_items"]]
         if isinstance(result, list):
-            return [item.strip().lower() for item in result]
+            return [str(item).strip().lower() for item in result]
         return [str(result).strip().lower()]
     except json.JSONDecodeError:
         return [response.text.strip().lower()]

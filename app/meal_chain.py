@@ -58,6 +58,7 @@ def get_coach_chain_with_meal_context(user_id: str) -> Runnable:
         model="gemini-3.6-flash",
         google_api_key=os.getenv("GOOGLE_API_KEY"),
         temperature=0.5,
+        max_retries=4,
     )
 
     return prompt.partial(meal_context=meal_context) | llm
@@ -117,6 +118,7 @@ def generate_daily_summary(user_id: str) -> str:
             model="gemini-3.6-flash",
             google_api_key=os.getenv("GOOGLE_API_KEY"),
             temperature=0.5,
+        max_retries=4,
         )
 
         chain = prompt.partial(meal_context=meal_context) | llm

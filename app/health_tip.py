@@ -53,8 +53,8 @@ def generate_health_tip(user_id: str, days: int = 3) -> str:
 
         return response.content if hasattr(response, 'content') else response
 
-    except Exception as e:
-        return f"Error generating health tip: {str(e)}"
+    except Exception:
+        return "No recent meal data is available. Please analyze a meal first to receive a personalized health tip."
 
     finally:
         db.close()
